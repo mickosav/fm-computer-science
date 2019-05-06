@@ -77,5 +77,8 @@ function insertionSort (arr) {
 
 /*
   Exercise 4: Merge Sort - very useful
-
+You're going to take your big list, and first divide down in two half size lists
+and recursively call merge sort on those smaller list, which in turn will do the same.
+The base case is when you have a list of one, at which point you will return that sorted list of one.
 */
+
