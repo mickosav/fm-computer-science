@@ -82,3 +82,32 @@ and recursively call merge sort on those smaller list, which in turn will do the
 The base case is when you have a list of one, at which point you will return that sorted list of one.
 */
 
+function mergeSort (arr) {
+  const length = arr.length
+  if (length <= 1) return arr
+
+  const middle = Math.round(length / 2)
+  const left = arr.slice(0, middle)
+  const right = arr.slice(middle)
+
+  const sortedLeft = mergeSort(left)
+  const sortedRight = mergeSort(right)
+
+  return merge(sortedLeft, sortedRight)
+}
+
+function merge(left, right) {
+  const results = []
+
+  while(left.length && right.length) {
+    if (left[0] <= right[0]) {
+      results.push(left.shift())
+    } else {
+      results.push(right.shift())
+    }
+  }
+
+  // one of the arrays is empty, but we don't care which one
+  // we want to add the one that isn't to results arr
+  return results.concat(left, right)
+}
